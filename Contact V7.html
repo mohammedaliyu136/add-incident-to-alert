@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://colorlib.com/etc/cf/ContactFrom_v7/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Contact V7</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="https://colorlib.com/etc/cf/ContactFrom_v7/images/icons/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/animate.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/hamburgers.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/animsition.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/select2.min.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/daterangepicker.css">
+
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/util.css">
+<link rel="stylesheet" type="text/css" href="./Contact V7_files/main.css">
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBjWE71lqxuSpVWmXnFrcbuuMoTnEn5keI",
+    authDomain: "incident-reporting-296516.firebaseapp.com",
+    databaseURL: "https://incident-reporting-296516.firebaseio.com",
+    projectId: "incident-reporting-296516",
+    storageBucket: "incident-reporting-296516.appspot.com",
+    messagingSenderId: "980747836311",
+    appId: "1:980747836311:web:c44c86dc1338a2921082d2",
+    measurementId: "G-K1W5HCHKY3"
+  };
+  // Initialize Firebase
+  fb=firebase.initializeApp(firebaseConfig);
+  //firebase.analytics();
+  //firebase.document.;//database().ref("incidents")
+  
+</script>
+
+</head>
+<body data-new-gr-c-s-check-loaded="14.980.0" data-gr-ext-installed="">
+<div class="container-contact100">
+<div class="wrap-contact100">
+  <form class="contact100-form validate-form">
+    <span class="contact100-form-title">
+    Add Incident
+    </span>
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+      <input class="input100" id="type_of_incident" type="text" name="name" placeholder="Type of Incident">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+      <input class="input100" id="location" type="text" name="name" placeholder="Incident Location">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+      <input class="input100" id="num_injured" type="text" name="name" placeholder="Number of injured">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+      <input class="input100" id="num_killed" type="text" name="name" placeholder="Number of killed">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Date TimeStamp">
+      <input class="input100" id="time_stamp" type="text" name="name" placeholder="Date TimeStamp">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+  </form>
+  <div class="container-contact100-form-btn">
+    <div class="wrap-contact100-form-btn">
+      <div class="contact100-form-bgbtn"></div>
+      <button class="contact100-form-btn" onclick="submitData()">
+      Add
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<div id="dropDownSelect1"></div>
+
+<script>
+  function submitData(){
+    var type_of_incident = document.getElementById("type_of_incident").value;
+    var location = document.getElementById("location").value;
+    var num_injured = document.getElementById("num_injured").value;
+    var num_killed = document.getElementById("num_killed").value;
+    var time_stamp = document.getElementById("time_stamp").value;
+    locData = location.split(",");
+    latitude="";
+    longitude="";
+    if(locData.length==2){
+      latitude=parseFloat(locData[0]);
+      longitude=parseFloat(locData[1]);
+    }
+    
+    fb
+    .firestore().collection("usershj").add({
+      type_of_incident: type_of_incident,
+      num_injured: num_injured,
+      num_killed: num_killed,
+      time_stamp: time_stamp,
+      location: location,
+      latitude:latitude,
+      longitude:longitude
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+    });
+    
+  }
+</script>
+
+<script type="text/javascript" async="" src="./Contact V7_files/analytics.js.download"></script><script src="./Contact V7_files/jquery-3.2.1.min.js.download"></script>
+
+<script src="./Contact V7_files/animsition.min.js.download"></script>
+
+<script src="./Contact V7_files/popper.js.download"></script>
+<script src="./Contact V7_files/bootstrap.min.js.download"></script>
+
+<script src="./Contact V7_files/select2.min.js.download"></script>
+
+<script src="./Contact V7_files/moment.min.js.download"></script>
+<script src="./Contact V7_files/daterangepicker.js.download"></script>
+
+<script src="./Contact V7_files/countdowntime.js.download"></script>
+
+<script src="./Contact V7_files/main.js.download"></script>
+
+<script async="" src="./Contact V7_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+
+</body></html>
