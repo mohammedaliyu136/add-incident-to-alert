@@ -73,6 +73,12 @@
       </label>
     </div>
     <div class="wrap-input100 validate-input" data-validate="Name is required">
+      <input class="input100" id="location_text" type="text" name="name" placeholder="Incident Location Text">
+      <label class="label-input100" for="name">
+      <span class="lnr lnr-user"></span>
+      </label>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
       <input class="input100" id="num_injured" type="text" name="name" placeholder="Number of injured">
       <label class="label-input100" for="name">
       <span class="lnr lnr-user"></span>
@@ -107,6 +113,7 @@
   function submitData(){
     var type_of_incident = document.getElementById("type_of_incident").value;
     var location = document.getElementById("location").value;
+    var location_text = document.getElementById("location_text").value;
     var num_injured = document.getElementById("num_injured").value;
     var num_killed = document.getElementById("num_killed").value;
     var time_stamp = document.getElementById("time_stamp").value;
@@ -124,6 +131,7 @@
       num_injured: num_injured,
       num_killed: num_killed,
       time_stamp: time_stamp,
+      location_text: location_text,
       location: location,
       latitude:latitude,
       longitude:longitude
@@ -132,6 +140,7 @@
         console.log("Document written with ID: ", docRef.id);
         document.getElementById("type_of_incident").value="";
         document.getElementById("location").value="";
+        document.getElementById("location_text").value="";
         document.getElementById("num_injured").value="";
         document.getElementById("num_killed").value="";
         document.getElementById("time_stamp").value="";
