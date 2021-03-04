@@ -55,6 +55,7 @@
 <body data-new-gr-c-s-check-loaded="14.980.0" data-gr-ext-installed="">
 <div class="container-contact100">
 <div class="wrap-contact100">
+  <!--<h1 id="loading">Loading...</h1>-->
   <form class="contact100-form validate-form">
     <span class="contact100-form-title">
     Add Incident
@@ -129,6 +130,11 @@
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
+        document.getElementById("type_of_incident").value="";
+        document.getElementById("location").value="";
+        document.getElementById("num_injured").value="";
+        document.getElementById("num_killed").value="";
+        document.getElementById("time_stamp").value="";
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
